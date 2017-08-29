@@ -1,0 +1,21 @@
+.green{
+    background-color: green;
+    height: 25%;
+}
+.yellow{
+    background-color: yellow;
+    height: 50%;
+    top:125px;
+}
+.purple{
+    background-color: purple;
+    height: 25%;
+    top: -250px
+}
+.item {
+    position: relative;
+}
+.container{
+    width:30%;
+    height:500px;
+}

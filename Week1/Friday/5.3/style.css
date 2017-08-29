@@ -1,0 +1,13 @@
+div>div{
+    height:50px;
+    background-color: #999;
+    display: block;
+    
+}
+div>div+div{
+    margin-top: 5px;
+}
+div>div:after{
+    content: attr(data-count);
+    color:white;
+}

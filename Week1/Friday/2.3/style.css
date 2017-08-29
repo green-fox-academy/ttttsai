@@ -1,0 +1,53 @@
+body{
+    width:1000px;
+    margin: 50px auto;
+}
+header{
+    background-color: purple;
+    height:50px;
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+}
+.nav{
+    float: left;
+    margin-left: 15px;
+    margin-top:10px;
+    height: 30px;
+    width:150px;
+    background-color: cyan;
+}
+.wholeContent{
+    height:800px;
+}
+.content{
+    float:left;
+    height:100%;
+}
+.mainContent{
+    width:60%;    
+    background-color: yellow;
+    margin-left:5%;
+}
+.sideContent{
+    width:30%;
+    background-color: green;
+}
+main{
+    height:75%;
+    margin:1%;
+}
+footer{
+    height:100px;
+    background-color: gray;
+}
+/*
+aside{
+    width:30%;
+    background-color: green;
+}
+main{
+    width:60%;    
+    background-color: yellow;
+}

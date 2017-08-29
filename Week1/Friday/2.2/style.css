@@ -1,0 +1,74 @@
+header{
+    background-color: aqua;
+    height:15%;
+}
+footer{
+    background-color: blue;
+    height:15%
+}
+main{
+    background-color: red;
+    width:50%;
+    margin: 0 10%;
+}
+.leftAside{
+    background-color: orange;
+    width:120px;
+}
+.rightAside{
+    background-color: purple;
+    width:120px;
+}
+.balck{
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: 600px;
+    left: 80%;
+}
+.wholeContent{
+    height:70%;
+}
+.mainContent{
+    height:100%;
+    float:left;
+}
+.wholeContent {
+    height: 100%;
+}
+body{
+    width:800px;
+    margin:15px auto;
+    height:800px;
+}
+/*body{
+    width:1000px;
+    margin: 0 auto;
+    height:800px;
+}
+header{
+    background-color: purple;
+    height:50px;
+    margin-top: 125px;
+}
+.nav{
+    float: left;
+    margin-left: 15px;
+    margin-top:10px;
+    height: 30px;
+    width:150px;
+    background-color: cyan;
+}
+.content{
+    float:left;
+    height:500px;
+}
+.mainContent{
+    width:70%;    
+    background-color: yellow;
+}
+.sideContent{
+    width:30%;
+    background-color: green;
+}

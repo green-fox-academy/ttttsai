@@ -1,0 +1,26 @@
+body{
+    background-color: orange;
+    height: 600px;
+    width:1000px;
+}
+div{
+    border-radius: 10px;
+    margin-left: 100px;
+    margin-top: 100px;
+    height: 200px;
+    border: 1px solid gray;
+    background-image: radial-gradient(circle at center, rgba(128,128,128,0.5), rgba(255,69,0,0.5));
+    box-shadow: 10px 5px 5px grey;  
+}
+button{
+    float: left;
+    height: 100px;
+    width: 200px;
+    margin: 20px 100px;
+}
+div>button:nth-child(1){
+    background: linear-gradient(to right, rgba(71,71,140,1), rgba(99,99,193,1));
+}
+div>button:nth-child(2){
+    background: linear-gradient(to right, #a4a10e, #d7d413);
+}

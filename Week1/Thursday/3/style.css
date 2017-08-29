@@ -1,0 +1,17 @@
+div{
+    border:15px solid #4285f4;
+    width:400px;
+    margin:10px;
+}
+p{
+    margin: 0;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+.north{
+    background-color: #e67676;
+}
+.south{
+    background-color: #a9e6e6;
+}
