@@ -1,0 +1,124 @@
+*:focus {
+    outline: 0 !important;
+}
+body{
+    height: 700px;
+    margin: 0;
+
+    width: 100%;
+    background: linear-gradient(to right, #aeaeae, #d3d3d3 , #aeaeae );
+    position: relative;
+
+}
+.center{
+    width: 900px;
+    height: 550px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.photo{
+    height: 450px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.photo > img, .photo > button{
+    float: left;
+}
+.photo > img {
+    height:100%;
+}
+.photo > button {
+    width:50px;
+    height:450px;
+    border: 0;
+    background:url(arrow.svg) no-repeat center;
+    background-color: white;
+    /* background-image: linear-gradient(to bottom, #ffffff, #e3e3e3); */
+}
+
+.arrowRight {
+    transform: scaleX(-1);
+}
+.photo > img {
+    height:450px;
+    width:800px;
+}
+ul {
+    padding:0;
+    margin:0;
+    list-style: none;
+    display: inline-block;
+}
+.thumbnails{
+    text-align: center;
+}
+ul > li {
+    float: left;
+    margin-right:30px;
+    display: inline;
+}
+li > button {
+    background-size: 100px;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 50px;
+}
+
+.focus{
+    border:5px solid white;
+    transform: scale(1.2);
+}
+.focus:after{
+    content: '';
+	display: block;  
+	position: absolute;
+	left: 5px;
+	bottom: 100%;
+	width: 0;
+	height: 0;
+	border-bottom: 15px solid white;
+	border-top: 15px solid transparent;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+}
+
+.contentContainer{
+    margin: 0;
+    background-color: rgba(117, 119, 117, 0.5);
+    height:120px;
+    position: absolute;
+    left: 50px;
+    top:330px;
+    width:800px;
+    padding: 3px 20px;
+    box-sizing: border-box;
+}
+h1{
+    font-size:1.4em;
+}
+
+.photo{
+    box-shadow: 5px 7px 2px #888888;
+}
+.thumb{
+    border-radius: 5px;
+    box-shadow: 0px 3px 2px #888888;
+}
+/* .thumb:before{
+    content: "asdd ddd";
+    background-color:black;
+    color:white;
+    width: 100px;
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+    visibility: hidden;
+} */
+.thumb:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
