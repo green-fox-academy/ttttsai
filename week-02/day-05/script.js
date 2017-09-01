@@ -52,7 +52,7 @@ function toggleFocusClass(){
     document.querySelectorAll("li")[CURRENTPHOTO].querySelector("button").classList.toggle("focus");
 }
 
-function onClickThumbBtn(value){
+function onClickThumbBtn(){
     toggleFocusClass();
     CURRENTPHOTO = Number(this.getAttribute("location"));
     toggleFocusClass();
