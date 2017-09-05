@@ -58,7 +58,7 @@ buyLollypopsBtn.addEventListener("click", function(){
 });
 candyMachine.addEventListener("click", function(){
     candyStore.generateRate *= 10;
-    this.updateCandyLollipopState2Page();
+    candyStore.updateCandyLollipopState2Page();
 });
 setInterval(function(){
     candyStore.generateCandyPerSecond();
