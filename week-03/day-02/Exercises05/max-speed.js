@@ -42,20 +42,20 @@ window.addEventListener('load', function() {
       buttonElement = document.createElement('button');
       buttonElement.appendChild(document.createTextNode(buttonDescriptor[0]));
       buttonElement.setAttribute('data-vehicle-type', buttonDescriptor[1]);
-      // buttonElement.setAttribute();
+      buttonElement.setAttribute('onClick', buttonDescriptor[1] + '.printMaxSpeed();');
       return buttonElement;
     })
     .forEach(function(buttonElement) {
-      buttonElement.addEventListener('click', function() {
-            var carType = buttonElement.getAttribute("data-vehicle-type");
-            if(carType === "car"){
-                car.printMaxSpeed();
-            } else if(carType === "airplane") {
-                airplane.printMaxSpeed();
-            } else {
-                skateboard.printMaxSpeed();
-            }
-          });
+      // buttonElement.addEventListener('click', function() {
+      //       var carType = buttonElement.getAttribute("data-vehicle-type");
+      //       if(carType === "car"){
+      //           car.printMaxSpeed();
+      //       } else if(carType === "airplane") {
+      //           airplane.printMaxSpeed();
+      //       } else {
+      //           skateboard.printMaxSpeed();
+      //       }
+      //     });
       document.body.appendChild(buttonElement);
     });
 });
