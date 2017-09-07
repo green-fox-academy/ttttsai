@@ -15,7 +15,7 @@ function getData(){
       for(let i = 0; i < data.messages.length; i++){
         let p = document.createElement("p");
         p.innerText = "name is: " + data.messages[i].name
-                            + " message is: " +  data.messages[i].message;
+                            + "       message is: " +  data.messages[i].message;
         div.appendChild(p);
         
       }
