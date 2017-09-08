@@ -1,0 +1,72 @@
+*{
+    padding:0;
+    margin:0;
+}
+header {
+    border-bottom: 2px solid #808080;
+    font-size: 10px;
+    padding: 5px;
+    padding-top: 2px;
+    margin-bottom: 2px;
+}
+header > button {
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+    cursor: pointer;
+}
+body {
+    font-family:verdana,arial,helvetica,sans-serif;
+    font-weight: normal;
+}
+
+li > div{
+    float:left;
+}
+li {
+    clear:left;
+    display: inline-block;
+    min-width: 60%;
+    padding-bottom:10px;
+}
+ul{
+    list-style-type: none;
+}
+.message > a {
+    text-decoration: none;
+    font-size: large;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 1000px;
+}
+.messageID {
+    padding: 16px 10px 0px 20px;
+    font-size: larger;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    color: #c6c6c6;
+    width: 50px;
+}
+.messageScore {
+    /* margin-right: 15px; */
+    min-width: 38px;
+}
+.messageScore > p {
+    color: #c6c6c6;
+}
+.message > p {
+    font-size: smaller;
+    color: #888;
+}
+.message > button {
+    border: none;
+    background: transparent;
+    font-size: x-small;
+    color: #c6c6c6;
+}
+.message > button+button {
+    margin-left: 5px;
+}
