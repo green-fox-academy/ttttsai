@@ -1,0 +1,19 @@
+.green{
+    background-color: green;
+}
+.yellow{
+    display: none;
+}
+.purple{
+    background-color: purple;
+}
+.item {
+    height: 100px;
+    width:25%;
+}
+.container {
+    background-color: yellow;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}

@@ -1,0 +1,16 @@
+.green{
+    background-color: green;
+    height: 25%;
+}
+.yellow{
+    display: none;
+}
+.purple{
+    background-color: purple;
+    height: 25%;
+}
+.container{
+    background-color: yellow;
+    width:30%;
+    height:500px;
+}
