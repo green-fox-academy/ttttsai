@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+header {
+    border-bottom: 2px solid #808080;
+    font-size: 10px;
+    padding: 5px;
+    padding-top: 2px;
+}
+
+header > button {
+    border: none;
+    background-color: transparent;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.required::before{
+    content:"*";
+    color:red;
+}
+
+h1 {
+    font-family: arial;
+    font-size: 18px;
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom: 5px solid #5f99cf;
+}
+
+main {
+    width:40%;
+    margin-left:8px;
+}
+
+main>div>div {
+    background-color: #cee3f8;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+.buttonArea{
+    background-color: white;
+}
+textarea{
+    width:100%;
+}
+input[type="search"]{
+    width: 100%;
+}
+main>div>div>p {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.buttonArea>p {
+    font-size: smaller;
+}
