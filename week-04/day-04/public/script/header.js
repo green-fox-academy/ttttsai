@@ -26,8 +26,15 @@ function renderHeader(){
     }
     
     loginBtn.style.float = "right";
-    loginBtn.addEventListener("click", function(){
-        window.location.replace("./login.html");
+    loginBtn.addEventListener("click", function(event){
+        let targetText = event.target.innerText;
+        if(targetText.indexOf("LOGIN »") > -1){
+            window.location.replace("./login.html");
+        }else{
+            localStorage.setItem("currentUser", "");
+            window.location.reload();
+        }
+        
     });
 
     header.appendChild(mainPageBtn);

@@ -7,11 +7,9 @@ var db = require('./database');
 var app = express();
 var jsonParser = bodyParser.json();
 
-//app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", express.static("public"));
 
 app.get("/", function(req, res){
-    console.log(__dirname);
     res.sendFile(__dirname + "/public/index.html");
 });
 
@@ -67,7 +65,7 @@ app.post("/posts", jsonParser, function(req, res){
         "title" : req.body.title,
         "href" : req.body.href
     };
-    console.log(req.headers);
+
     db.createPost(body, req.headers.username, function(data){
         res.send(data);
     });

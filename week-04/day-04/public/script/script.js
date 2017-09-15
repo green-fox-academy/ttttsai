@@ -4,6 +4,7 @@
 const HOST_NAME = "http://localhost:8080";
 
 const SessionStorage = window.sessionStorage;
+//const LocalStorage = window.localStorage;
 
 function createXMLHttpRequest(method, url){
     let xhr = new XMLHttpRequest();
@@ -12,39 +13,57 @@ function createXMLHttpRequest(method, url){
 }
 
 function modifyPost(event, value){
-    SessionStorage.setItem("href", value.href);
-    SessionStorage.setItem("id", value._id);
-    SessionStorage.setItem("title", value.title);
-
-    window.location.replace("./modifyPost.html");
+    // if the post have a owner and is not the login user
+    if(value.owner && value.owner !== LocalStorage.getItem("currentUser")){
+        alert("You can not modify other user's post");
+    }else {
+        SessionStorage.setItem("href", value.href);
+        SessionStorage.setItem("id", value._id);
+        SessionStorage.setItem("title", value.title);
+    
+        window.location.replace("./modifyPost.html");
+    }
+    
 }
 
-function removePost(event){
-    let target = event.target;
-    let id = target.getAttribute("data-id");
-    let xhr = createXMLHttpRequest("DELETE", "/posts/" + id);
-    xhr.setRequestHeader("Accept", "application/json");
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-            getData();
+function removePost(event, value){
+    if(value.owner && value.owner !== LocalStorage.getItem("currentUser")){
+        alert("You can not delete other user's post");
+    }else{
+        let target = event.target;
+        let id = target.getAttribute("data-id");
+        let xhr = createXMLHttpRequest("DELETE", "/posts/" + id);
+        xhr.setRequestHeader("Accept", "application/json");
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                getData();
+            }
         }
+        xhr.send(null);
     }
-
-    xhr.send(null);
-
 }
 
 function upVoteSuccess(target, returnData){
-    target.src = "./upvoted.png";
     let p = target.parentElement.getElementsByTagName("p")[0];
     let downImg = target.parentElement.getElementsByTagName("img")[1];
+    // let userName = LocalStorage.getItem("currentUser");
+    // if(userName && userName.length > 0 ){
+    //     let voteValue = returnData.vote[userName];
+    //     target.src = voteValue === 1 ? "./upvoted.png" : "./upvote.png";
+    // }
+    target.src = returnData.vote === 1 ? "./upvoted.png" : "./upvote.png";
     downImg.src = "./downvote.png";
     p.innerText = returnData.score;
 }
 function downVoteSuccess(target, returnData){
-    target.src = "./downvoted.png";
+    target.src = returnData.vote === -1 ? "./downvoted.png" : "./downvote.png";
     let p = target.parentElement.getElementsByTagName("p")[0];
     let upImg = target.parentElement.getElementsByTagName("img")[0];
+    // let userName = LocalStorage.getItem("currentUser");
+    // if(userName && userName.length > 0 ){
+    //     let voteValue = returnData.vote[userName];
+    //     target.src = voteValue === -1 ? "./downvoted.png" : "./downvote.png";
+    // }
     upImg.src = "./upvote.png";
     p.innerText = returnData.score;
 }
@@ -56,8 +75,8 @@ function upVote(event){
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function(){
         if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-            console.log(JSON.parse(xhr.response));
             upVoteSuccess(target, JSON.parse(xhr.response));
+            getData();
         }
     };
 
@@ -71,8 +90,8 @@ function downVote(event){
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function(){
         if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-            console.log(JSON.parse(xhr.response));
             downVoteSuccess(target, JSON.parse(xhr.response));
+            getData();
         }
     };
 
@@ -81,9 +100,15 @@ function downVote(event){
 
 function createEachMessageScoreDive(value){
     let div = document.createElement("div");
+    let userName = LocalStorage.getItem("currentUser");
     
     let imgUP = document.createElement("img");
-    imgUP.src = "./upvote.png";
+    // imgUP.src = "./upvote.png";
+    // if(userName && userName.length > 0 ){
+    //     let voteValue = value.vote[userName];
+    //     imgUP.src = voteValue > 0 ? "./upvoted.png" : "./upvote.png";
+    // }
+    imgUP.src = value.vote > 0 ? "./upvoted.png" : "./upvote.png";
     imgUP.setAttribute("data-id", value._id);
     imgUP.addEventListener("click", function(event){
         upVote(event);
@@ -95,7 +120,12 @@ function createEachMessageScoreDive(value){
     div.appendChild(p);
 
     let imgDOWN= document.createElement("img");
-    imgDOWN.src = "./downvote.png";
+    // imgDOWN.src = "./downvote.png";
+    // if(userName && userName.length > 0 ){
+    //     let voteValue = value.vote[userName];
+    //     imgDOWN.src = voteValue < 0 ? "./downvoted.png" : "./downvote.png";
+    // }
+    imgDOWN.src = value.vote < 0 ? "./downvoted.png" : "./downvote.png";
     imgDOWN.setAttribute("data-id", value._id);
     imgDOWN.addEventListener("click", function(event){
         downVote(event);
@@ -160,8 +190,8 @@ function createEachMessageContentDive(value){
     btnRemove.innerText = "remove";
     btnRemove.setAttribute("data-id", value._id);
     btnRemove.addEventListener("click", function(event){
-        removePost(event);
-    });
+        removePost(event, this);
+    }.bind(value));
 
     div.appendChild(btnModify);
     div.appendChild(btnRemove);
@@ -198,7 +228,12 @@ function getData(){
     xhr.onreadystatechange = function(){
         if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
             console.log(JSON.parse(xhr.response));
-            updateData2Page(JSON.parse(xhr.response).posts.reverse());
+            //sort the posts by score;
+            let data = JSON.parse(xhr.response).posts;
+            data = data.sort(function(post1, post2){
+                return post1.score < post2.score;
+            });
+            updateData2Page(data);
         }
     }
     xhr.send(null);

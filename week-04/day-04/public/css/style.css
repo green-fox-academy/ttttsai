@@ -14,6 +14,7 @@ header > button {
     background-color: transparent;
     margin-right: 20px;
     cursor: pointer;
+    outline:none;
 }
 body {
     font-family:verdana,arial,helvetica,sans-serif;
@@ -23,9 +24,16 @@ body {
 li > div{
     float:left;
 }
+li:hover{
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: #f9f8f8;
+}
 li {
     clear:left;
     display: inline-block;
+    width:100%;
+    box-sizing: border-box;
     min-width: 60%;
     padding-bottom:10px;
 }
@@ -62,6 +70,7 @@ ul{
     color: #888;
 }
 .message > button {
+    outline:none;
     border: none;
     background: transparent;
     font-size: x-small;
